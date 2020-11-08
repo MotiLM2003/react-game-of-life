@@ -1,20 +1,220 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.html {
+  font-size: 62.5%;
+}
+body {
+  background-color: #242423;
+  font-size: 1.1rem;
+}
+
+.header {
+  background-color: #463f3a;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  margin-bottom: 1.5rem;
+}
+.contaienr {
+  width: 1200px;
+  margin: 0 auto;
+  min-height: 78.6vh;
+}
 .grid-container {
   display: grid;
-  max-width: 500px;
-  max-height: 100px;
+  width: 720px;
+  height: 720px;
+  grid-auto-rows: 1fr;
 }
 
 .game-grid-item {
-  width: 1fr;
-  height: 20px;
-  border: solid 1px #000;
+  padding: 3px;
+  background-color: #333533;
+  border: solid 0.5px #463f3a;
   transition: all 1s ease;
+  flex-grow: 1;
 }
 
+.controllers {
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.controllers > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.controllers span {
+  display: inline-block;
+  background-color: snow;
+  padding: 3px;
+  min-width: 50px;
+  border-radius: 0.5rem;
+  color: #242423;
+  text-align: center;
+}
+
+.stage {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+}
+
+.btn {
+  margin-top: 5px;
+  display: inline-block;
+  background-color: transparent;
+  padding: 10px;
+  width: 100%;
+  border: 1px solid #fff;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.1s ease-in;
+  margin: 0 5px;
+}
+
+.btn:hover {
+  background-color: snow;
+  color: #242423;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #85182a;
+  height: 10vh;
+}
 .dead-cell {
-  background-color: #fff;
+  background-color: #252423;
 }
 
-.live-cell {
-  background-color: salmon;
+.live-cell-1 {
+  background-color: #05668d;
+}
+
+.live-cell-2 {
+  background-color: #028090;
+}
+
+.live-cell-3 {
+  background-color: #00a896;
+}
+
+.live-cell-4 {
+  background-color: #02c39a;
+}
+
+.live-cell-5 {
+  background-color: #f0f3bd;
+}
+
+.live-cell-2-1 {
+  background-color: #ff7b00;
+}
+
+.live-cell-2-2 {
+  background-color: #ff8800;
+}
+
+.live-cell-2-3 {
+  background-color: #ff9500;
+}
+
+.live-cell-2-4 {
+  background-color: #ffa200;
+}
+
+.live-cell-2-5 {
+  background-color: #ffd000;
+}
+
+.live-cell-3-1 {
+  background-color: #7bdff2;
+}
+
+.live-cell-3-2 {
+  background-color: #b2f7ef;
+}
+
+.live-cell-3-3 {
+  background-color: #eff7f6;
+}
+
+.live-cell-3-4 {
+  background-color: #f7d6e0;
+}
+
+.live-cell-3-5 {
+  background-color: #f2b5d4;
+}
+
+.live-cell-4-1 {
+  background-color: #abc4ff;
+}
+
+.live-cell-4-2 {
+  background-color: #e2eafc;
+}
+
+.live-cell-4-3 {
+  background-color: #d7e3fc;
+}
+
+.live-cell-4-4 {
+  background-color: #ccdbfd;
+}
+
+.live-cell-4-5 {
+  background-color: #b6ccfe;
+}
+
+.live-cell-5-1 {
+  background-color: #85182a;
+}
+
+.live-cell-5-2 {
+  background-color: #a11d33;
+}
+
+.live-cell-5-3 {
+  background-color: #c71f37;
+}
+
+.live-cell-5-4 {
+  background-color: #da1e37;
+}
+
+.live-cell-5-5 {
+  background-color: #e01e37;
+}
+
+.live-cell-6-1 {
+  background-color: #dab49d;
+}
+
+.live-cell-6-2 {
+  background-color: #895737;
+}
+
+.live-cell-6-3 {
+  background-color: #5e3023;
+}
+
+.live-cell-6-4 {
+  background-color: #c08552;
+}
+
+.live-cell-6-5 {
+  background-color: #f3e9dc;
 }
