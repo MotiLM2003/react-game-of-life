@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 import './styles/style.css';
 import GameGrid from './components/GameGrid';
 import Controls from './components/Controls';
 import produce from 'immer';
-import { _ } from 'lodash.random';
+
 import Header from './components/Header';
 import Footer from './components/Footer';
 
@@ -23,15 +23,15 @@ const App = () => {
   const [running, setRunning] = useState(false);
   const runningRef = useRef();
   const timerRef = useRef();
-  const [timerDelay, setTimerDelay] = useState(100);
+  const [timerDelay, setTimerDelay] = useState(250);
   const [gridSize, setGridSize] = useState(25);
+  const [isOnReSizing, setIsOnResizing] = useState(false);
   useEffect(() => {
     refreshGrid();
-    console.log('refresh');
   }, [gridSize]);
 
   const [liveCells, setLiveCells] = useState(0);
-  const [chanceToAppear, setChanceToAppear] = useState(22);
+  const [chanceToAppear, setChanceToAppear] = useState(42);
 
   useEffect(() => {
     refreshGrid();
@@ -44,13 +44,15 @@ const App = () => {
   sizeRef.current = gridSize;
 
   const [grid, setGrid] = useState(setNewGrid);
+  useEffect(() => {
+    setIsOnResizing(false);
+  }, [grid]);
 
   function setNewGrid() {
     const rows = [];
     const ran = Math.round(Math.random() * 1);
 
     for (let i = 0; i < parseInt(gridSize); i++) {
-      console.log('grid-size', gridSize);
       rows.push(Array.from(Array(gridSize), setRandom));
     }
     return rows;
@@ -66,8 +68,8 @@ const App = () => {
   }
 
   const handleGridSize = (value) => {
-    //console.log('value', value);
-    setGridSize(value);
+    console.log('value:', value);
+    setGridSize(parseInt(value));
   };
 
   const handleTimer = (value) => {
@@ -85,13 +87,12 @@ const App = () => {
     }
   }, [running]);
 
-  const refreshGrid = () => {
-    setRunning(false);
-    console.log('refresh', gridSize);
+  function refreshGrid() {
+    if (isOnReSizing) return;
+    setIsOnResizing(true);
     setGrid(setNewGrid);
-
     cyclesCounter = 0;
-  };
+  }
   const handleSetRunning = () => {
     setRunning(!running);
   };
@@ -110,7 +111,13 @@ const App = () => {
     setGrid((g) => {
       return produce(g, (gridCopy) => {
         for (let i = 0; i < gridSize; i++) {
+          if (g[i] === undefined) {
+            return;
+          }
           for (let k = 0; k < gridSize; k++) {
+            if (g[i][k] === undefined) {
+              return;
+            }
             if (parseInt(gridCopy[i][k]) === 1) {
               liveCellsCount += 1;
             }
@@ -126,7 +133,10 @@ const App = () => {
             if (neighbors < 2 || neighbors > 3) {
               gridCopy[i][k] = 0;
             } else if (g[i][k] === 0 && neighbors === 3) {
-              gridCopy[i][k] = 1;
+              const tempCopy = gridCopy[i][k];
+              if (tempCopy !== undefined) {
+                gridCopy[i][k] = 1;
+              }
             }
           }
         }
@@ -137,7 +147,6 @@ const App = () => {
     }
 
     liveCellRef.current = liveCellsCount;
-    // console.log('liveCells', liveCellRef.current);
     setTimeout(() => {
       if (running) {
         cyclesCounter = cyclesCounter + 1;
@@ -151,7 +160,7 @@ const App = () => {
   return (
     <React.Fragment>
       <Header />
-      <div class='contaienr'>
+      <div className='contaienr'>
         <div className='stage'>
           <Controls
             handleSetRunning={handleSetRunning}

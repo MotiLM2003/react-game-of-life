@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useEffect } from 'react';
 
 const GameGridItem = ({ cell, toggleLife, liveCells }) => {
   useEffect(() => {}, [cell]);
@@ -70,8 +70,6 @@ const GameGridItem = ({ cell, toggleLife, liveCells }) => {
       // (liveCells <= 60) {
       return liveClass6[rnd];
     }
-
-    return rnd;
   };
 
   return (
@@ -82,4 +80,4 @@ const GameGridItem = ({ cell, toggleLife, liveCells }) => {
   );
 };
 
-export default React.memo(GameGridItem);
+export default GameGridItem;

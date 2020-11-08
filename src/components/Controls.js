@@ -21,7 +21,7 @@ const Controls = ({
     handleGridSize(e.target.value);
   };
   return (
-    <div class='controllers'>
+    <div className='controllers'>
       <div>
         <div>
           <h3>Timelapse</h3>
@@ -32,7 +32,7 @@ const Controls = ({
             value={timerDelay}
             onChange={handleSlider}
           />
-          <span>{timerDelay}</span>
+          <span>{timerDelay}ms</span>
         </div>
       </div>
       <div>
@@ -41,11 +41,13 @@ const Controls = ({
           <input
             type='range'
             min='10'
-            max='150'
+            max='42'
             value={gridSize}
             onChange={handleSize}
           />
-          <span>{gridSize}</span>
+          <span>
+            {gridSize}x{gridSize}
+          </span>
         </div>
       </div>
 
