@@ -26,6 +26,7 @@ const App = () => {
   const [timerDelay, setTimerDelay] = useState(250);
   const [gridSize, setGridSize] = useState(25);
   const [isOnReSizing, setIsOnResizing] = useState(false);
+  const [color, setColor] = useState(0);
   useEffect(() => {
     refreshGrid();
   }, [gridSize]);
@@ -174,12 +175,15 @@ const App = () => {
             refreshGrid={refreshGrid}
             chanceToAppear={chanceToAppear}
             setChanceToAppear={setChanceToAppear}
+            color={color}
+            setColor={setColor}
           />
           <GameGrid
             grid={grid}
             setGrid={setGrid}
             gridSize={gridSize}
             liveCells={liveCells}
+            color={color}
           />
         </div>
       </div>

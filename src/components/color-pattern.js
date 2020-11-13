@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
-const GameGridItem = ({ cell, toggleLife, liveCells, colorIndex }) => {
-  useEffect(() => {}, [cell]);
+const ColorPattern = ({ color, setColor }) => {
   const colors = [
     ['live-cell-1', 'live-cell-2', 'live-cell-3', 'live-cell-4', 'live-cell-5'],
     [
@@ -40,6 +39,7 @@ const GameGridItem = ({ cell, toggleLife, liveCells, colorIndex }) => {
       'live-cell-6-4',
       'live-cell-6-5',
     ],
+    ,
     [
       'live-cell-7-1',
       'live-cell-7-2',
@@ -47,6 +47,7 @@ const GameGridItem = ({ cell, toggleLife, liveCells, colorIndex }) => {
       'live-cell-7-4',
       'live-cell-7-5',
     ],
+    ,
     [
       'live-cell-8-1',
       'live-cell-8-2',
@@ -56,20 +57,23 @@ const GameGridItem = ({ cell, toggleLife, liveCells, colorIndex }) => {
     ],
   ];
 
-  function getRandomNumber(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
-  console.log(colorIndex, 'coloridnex');
   return (
     <div
-      onClick={toggleLife}
-      className={`game-grid-item ${
-        cell
-          ? colors[colorIndex][getRandomNumber(0, colors[colorIndex].length)]
-          : 'dead-cell'
-      }`}
-    ></div>
+      class='colors-container'
+      onClick={() => {
+        const cColor = color + 1;
+
+        if (color === color.length) color = 0;
+        setColor(cColor);
+      }}
+    >
+      <div className={`color-item ${colors[color][0]} `}>&nbsp;</div>
+      <div className={`color-item ${colors[color][1]} `}>&nbsp;</div>
+      <div className={`color-item ${colors[color][2]} `}>&nbsp;</div>
+      <div className={`color-item ${colors[color][3]} `}>&nbsp;</div>
+      <div className={`color-item ${colors[color][4]} `}>&nbsp;</div>
+    </div>
   );
 };
 
-export default React.memo(GameGridItem);
+export default ColorPattern;

@@ -1,4 +1,5 @@
 import React from 'react';
+import ColorPattern from './color-pattern';
 
 const Controls = ({
   handleTimer,
@@ -12,6 +13,8 @@ const Controls = ({
   refreshGrid,
   chanceToAppear,
   setChanceToAppear,
+  color,
+  setColor,
 }) => {
   const handleSlider = (e) => {
     handleTimer(e.target.value);
@@ -22,6 +25,12 @@ const Controls = ({
   };
   return (
     <div className='controllers'>
+      <div>
+        <div style={{ width: '100%' }}>
+          <h3>Colors Pattern</h3>
+          <ColorPattern color={color} setColor={setColor} />
+        </div>
+      </div>
       <div>
         <div>
           <h3>Timelapse</h3>

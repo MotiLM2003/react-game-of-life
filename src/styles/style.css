@@ -60,7 +60,7 @@ body #root {
   padding: 3px;
 
   border: solid 0.5px #463f3a;
-  transition: all 1.5s ease;
+  transition: all 0.5s ease;
   border-radius: 5px;
   flex-grow: 1;
 }
@@ -90,6 +90,43 @@ body #root {
   border-radius: 0.5rem;
   color: #242423;
   text-align: center;
+}
+
+.colors-container {
+  flex-grow: 1;
+}
+.colors-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  flex-basis: 20%;
+  cursor: pointer;
+}
+
+.color-item {
+  flex-grow: 1;
+  margin: 1px;
+  border-radius: 5px;
+  width: 100x;
+}
+.c-p-1 {
+  background-color: red;
+}
+
+.c-p-2 {
+  background-color: green;
+}
+
+.c-p-3 {
+  background-color: yellow;
+}
+
+.c-p-4 {
+  background-color: purple;
+}
+
+.c-p-5 {
+  background-color: green;
 }
 
 .stage {
@@ -251,4 +288,48 @@ div[class*='live'] {
 
 .live-cell-6-5 {
   background-color: #f3e9dc;
+}
+
+.live-cell-7-1 {
+  background-color: #dab49d;
+}
+
+.live-cell-7-2 {
+  background-color: #ff5d8f;
+}
+
+.live-cell-7-3 {
+  background-color: #ff97b7;
+}
+
+.live-cell-7-4 {
+  background-color: #ffacc5;
+}
+
+.live-cell-7-5 {
+  background-color: #ffcad4;
+}
+
+.live-cell-8-1 {
+  background-color: #f3e9dc;
+}
+
+.live-cell-8-2 {
+  background-color: #8ea604;
+}
+
+.live-cell-8-3 {
+  background-color: #f5bb00;
+}
+
+.live-cell-8-3 {
+  background-color: #ec9f05;
+}
+
+.live-cell-8-4 {
+  background-color: #d76a03;
+}
+
+.live-cell-8-5 {
+  background-color: #bf3100;
 }

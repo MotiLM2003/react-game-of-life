@@ -2,7 +2,7 @@ import React from 'react';
 import produce from 'immer';
 import GameGridItem from './GameGridItem';
 
-const GameGrid = ({ grid, setGrid, gridSize, liveCells }) => {
+const GameGrid = ({ grid, setGrid, gridSize, liveCells, color }) => {
   const toggleLife = (x, y) => {
     const newGrid = produce(grid, (copy) => {
       copy[x][y] = copy[x][y] ? 0 : 1;
@@ -23,6 +23,7 @@ const GameGrid = ({ grid, setGrid, gridSize, liveCells }) => {
               key={`${rowIndex}-${colIndex}`}
               cell={grid[rowIndex][colIndex]}
               liveCells={liveCells}
+              colorIndex={color}
               toggleLife={() => {
                 toggleLife(rowIndex, colIndex);
               }}
